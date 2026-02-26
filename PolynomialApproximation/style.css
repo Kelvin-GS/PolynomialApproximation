@@ -1,0 +1,248 @@
+/* Base Variables & Theme Setup */
+:root {
+    --bg-main: #FAFAFA;       /* Off-white */
+    --text-main: #2A2A2A;     /* Warm Charcoal */
+    --text-muted: #5C5C5C;    
+    --accent-teal: #14B8A6;   /* Bright Teal */
+    --accent-hover: #0D9488;
+    --card-bg: #FFFFFF;
+    --card-soft-bg: #F3F4F6;  /* Soft Background for Stats */
+    --border-color: #E5E7EB;
+    
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.03);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+    
+    --radius-md: 10px;
+    --radius-sm: 8px;
+    
+    --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Reset & Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: var(--font-ui);
+    line-height: 1.5;
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Typography Hierarchy */
+h1 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.sub-heading {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    color: var(--text-main);
+}
+
+label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.4rem;
+}
+
+.math-var {
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-size: 1.05rem;
+}
+
+/* Layout Infrastructure */
+.app-container {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 2rem;
+    max-width: 1400px;
+    width: 100%;
+}
+
+.main-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-header {
+    /* Aligning with the top naturally */
+}
+
+.side-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    /* align side column slightly detached from top heading if needed */
+    margin-top: 3.4rem; 
+}
+
+/* Common Card Styles */
+.shadow-card {
+    background: var(--card-bg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+}
+
+.soft-bg {
+    background: var(--card-soft-bg);
+    border: none;
+    box-shadow: none;
+}
+
+/* Chart Wrappers */
+.chart-card {
+    background: var(--card-bg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    position: relative;
+    width: 100%;
+}
+
+.main-chart-wrapper {
+    flex: 1;
+    min-height: 500px; /* give ample vertical space */
+}
+
+/* Specific for small error chart */
+.small-chart-wrapper {
+    padding: 1.25rem;
+}
+.sparkline-container {
+    height: 120px;
+    position: relative;
+}
+
+/* Control Components */
+.control-group {
+    margin-bottom: 1.25rem;
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+}
+
+.input-slider-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+input[type="number"] {
+    width: 70px;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    color: var(--text-main);
+    box-shadow: var(--shadow-sm);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input[type="number"]:focus {
+    border-color: var(--accent-teal);
+}
+
+input[type="range"] {
+    flex: 1;
+    accent-color: var(--accent-teal);
+}
+
+.accent-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--accent-teal);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: background-color 0.2s, transform 0.1s;
+    font-family: var(--font-ui);
+    margin-top: 0.5rem;
+}
+
+.accent-btn:hover {
+    background-color: var(--accent-hover);
+}
+.accent-btn:active {
+    transform: translateY(1px);
+}
+
+/* Stats Card Specific */
+.stats-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.25rem;
+}
+
+.stat-line {
+    font-size: 0.9rem;
+}
+
+.main-stat {
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.main-stat span#max-error-val {
+    color: var(--accent-teal);
+}
+
+.sub-stat {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+.info-stat {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.soft-divider {
+    border: none;
+    border-top: 1px solid #E5E7EB;
+    /* lighter divider for soft bg */
+    border-color: rgba(0,0,0,0.06); 
+}
+
+/* Responsive Stacking */
+@media (max-width: 900px) {
+    .app-container {
+        grid-template-columns: 1fr;
+    }
+    .side-column {
+        margin-top: 0;
+    }
+    .main-chart-wrapper {
+        min-height: 400px;
+    }
+}
