@@ -209,8 +209,8 @@ stats_sub_text.set_text(f'at x ≈ {max_err_x:.3f}   •   Grid: [-2, 2]   •  
 # add a divider line in the stats box (like the web version's <hr>)
 # --------------------------------------------------
 
-ax_stats.axhline(y=0.48, xmin=0.1, xmax=0.9, color=BORDER_COLOR, linewidth=0.8,
-                 transform=ax_stats.transAxes)
+ax_stats.plot([0.1, 0.9], [0.48, 0.48], color=BORDER_COLOR, linewidth=0.8,
+              transform=ax_stats.transAxes, clip_on=False)
 
 # --------------------------------------------------
 # interactive widgets
