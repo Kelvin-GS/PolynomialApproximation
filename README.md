@@ -43,3 +43,7 @@ The Maclaurin series for $e^x$ (Taylor series centered at $a = 0$) is:
 $$e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \dots + \frac{x^n}{n!}$$
 
 The tool computes the partial sum $P_n(x)$ up to whatever degree $n$ you pick and plots it against `np.exp(x)` over $[-2, 2]$.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
