@@ -141,8 +141,7 @@ for spine in ax_stats.spines.values():
 # generate the initial data
 # --------------------------------------------------
 
-x_data = np.arange(x_min, x_max + initial_step, initial_step)
-x_data = np.round(x_data, 4)   # avoid floating point weirdness
+x_data = np.arange(x_min, x_max + initial_step/2, initial_step)
 
 true_values = np.exp(x_data)
 approx_values = calc_polynomial(x_data, initial_degree)
@@ -209,8 +208,8 @@ stats_sub_text.set_text(f'at x ≈ {max_err_x:.3f}   •   Grid: [-2, 2]   •  
 # add a divider line in the stats box (like the web version's <hr>)
 # --------------------------------------------------
 
-ax_stats.axhline(y=0.48, xmin=0.1, xmax=0.9, color=BORDER_COLOR, linewidth=0.8,
-                 transform=ax_stats.transAxes)
+ax_stats.plot([0.1, 0.9], [0.48, 0.48], color=BORDER_COLOR, linewidth=0.8,
+              transform=ax_stats.transAxes, clip_on=False)
 
 # --------------------------------------------------
 # interactive widgets
@@ -262,17 +261,20 @@ def update_plot(val=None):
 
     # try to read step from the text box
     try:
-        step = float(step_textbox.text)
-        if step <= 0 or step > 0.5:
-            step = 0.01   # safety fallback
+        step_val = float(step_textbox.text)
+        if step_val <= 0 or step_val > 0.5:
+            step_val = 0.01   # safety fallback
     except:
-        step = 0.01       # if they type something weird
+        step_val = 0.01       # if they type something weird
 
+    if step_textbox.text != str(step_val):
+        step_textbox.set_val(str(step_val))
+        
+    step = step_val
     current_step = step
 
     # recalculate everything
-    x = np.arange(x_min, x_max + step, step)
-    x = np.round(x, 4)
+    x = np.arange(x_min, x_max + step/2, step)
 
     true_vals = np.exp(x)
     approx_vals = calc_polynomial(x, degree)
